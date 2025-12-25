@@ -1,0 +1,48 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Reusing your gradient mask for potential future use */
+.fade-mask {
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+/* Mobile Menu Transition */
+#mobileMenu {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Custom Scrollbar for the policy section */
+.policy-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.policy-text::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.policy-text::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+.policy-text::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.text-outline {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.15);
+    color: transparent;
+    transition: all 0.3s ease;
+}
+
+.group:hover .text-outline {
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.4);
+    /* Optional: Fill it in on hover */
+    /* color: rgba(255, 255, 255, 0.1); */
+}

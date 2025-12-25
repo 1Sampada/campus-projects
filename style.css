@@ -1,0 +1,163 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Typography & Layout */
+.marquee-item {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    /* Responsive giant text */
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.dot {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    color: rgba(255, 255, 255, 0.3);
+    /* Dimmer separator */
+    vertical-align: middle;
+}
+
+/* Gradient Fade on Edges */
+.fade-mask {
+    mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%);
+}
+
+/* Hardware acceleration for smooth movement */
+.marquee {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Custom Input Styling */
+.custom-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #e5e7eb;
+    /* Gray-200 */
+    padding: 1rem 0;
+    font-size: 1.125rem;
+    /* Text-lg */
+    font-weight: 500;
+    color: #000;
+    outline: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    border-bottom-color: #000;
+    padding-left: 0.5rem;
+    /* Subtle shift on focus */
+}
+
+.custom-input::placeholder {
+    color: #9ca3af;
+    /* Gray-400 */
+    font-weight: 400;
+}
+
+/* Error State */
+.custom-input.input-error {
+    border-bottom-color: #ef4444;
+    /* Red-500 */
+    color: #ef4444;
+    animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+.custom-input.input-error::placeholder {
+    color: #fca5a5;
+}
+
+/* Shake Animation for Errors */
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+select.custom-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='black'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.25rem center;
+    background-size: 1rem;
+    color: #000;
+}
+
+select.custom-input:invalid {
+    color: #9ca3af;
+}
+
+/* Mobile Menu Transition */
+#mobileMenu {
+    transition: transform 0.3s ease-in-out;
+}
+
+select option {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 500;
+    padding: 12px;
+}
+
+@keyframes whatsappDoublePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6),
+            0 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+
+    60% {
+        box-shadow: 0 0 0 14px rgba(37, 211, 102, 0),
+            0 0 0 28px rgba(37, 211, 102, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0),
+            0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+.animate-whatsapp {
+    animation: whatsappDoublePulse 3s infinite;
+}
+
+.animate-whatsapp:hover {
+    transform: translateY(-50%) scale(1.15);
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.9);
+}
