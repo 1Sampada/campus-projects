@@ -148,9 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         function setActiveLinkByHref(href) {
             clearActive();
             // Handle both full url and hash
-            const link = document.querySelector(`.nav-link[href="${href}"]`) || 
-                         document.querySelector(`.nav-link[href*="${href}"]`);
-            
+            const link = document.querySelector(`.nav-link[href="${href}"]`) ||
+                document.querySelector(`.nav-link[href*="${href}"]`);
+
             if (link) {
                 link.classList.add('text-white');
                 link.classList.remove('text-gray-400');
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-resize Textarea
     if (textarea) {
-        textarea.addEventListener('input', function() {
+        textarea.addEventListener('input', function () {
             this.style.height = 'auto';
             this.style.height = (this.scrollHeight) + 'px';
         });
@@ -207,14 +207,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             // Specific logic for Select dropdowns color
             if (input.tagName === 'SELECT') {
-                input.addEventListener("change", function() {
+                input.addEventListener("change", function () {
                     this.style.color = "black";
                     this.classList.remove("border-red-500");
                 });
             }
         });
 
-        form.addEventListener("submit", function(e) {
+        form.addEventListener("submit", function (e) {
             e.preventDefault();
             let isValid = true;
 
@@ -244,56 +244,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 3. Simulate API Call (1.5s delay)
             // 3. SEND EMAIL USING EMAILJS
-emailjs.send(
-    "service_a4rgi8x",          // Service ID
-    "template_nn5a6za",         // Template ID
-    {
-        first_name: document.getElementById("firstName").value,
-        last_name: document.getElementById("lastName").value,
-        email: document.getElementById("email").value,
-        phone: document.getElementById("phone").value,
-        company: document.getElementById("company").value,
-        plan: document.getElementById("plan").value,
-        message: document.getElementById("message").value,
-    }
-).then(() => {
+            emailjs.send(
+                "service_a4rgi8x",          // Service ID
+                "template_nn5a6za",         // Template ID
+                {
+                    first_name: document.getElementById("firstName").value,
+                    last_name: document.getElementById("lastName").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    company: document.getElementById("company").value,
+                    plan: document.getElementById("plan").value,
+                    message: document.getElementById("message").value,
+                }
+            ).then(() => {
 
-    // ✅ SUCCESS UI
-    btnText.innerHTML = "Request Sent ✔";
-    submitBtn.classList.remove("bg-black", "hover:bg-gray-900");
-    submitBtn.classList.add("bg-green-600", "hover:bg-green-700");
+                // ✅ SUCCESS UI
+                btnText.innerHTML = "Request Sent ✔";
+                submitBtn.classList.remove("bg-black", "hover:bg-gray-900");
+                submitBtn.classList.add("bg-green-600", "hover:bg-green-700");
 
-    if (successCard) {
-        successCard.classList.remove("hidden");
-        setTimeout(() => {
-            successCard.classList.remove("opacity-0", "translate-y-4");
-        }, 50);
-    }
+                if (successCard) {
+                    successCard.classList.remove("hidden");
+                    setTimeout(() => {
+                        successCard.classList.remove("opacity-0", "translate-y-4");
+                    }, 50);
+                }
 
-    form.reset();
-    form.querySelectorAll("select").forEach(s => s.style.color = "");
+                form.reset();
+                form.querySelectorAll("select").forEach(s => s.style.color = "");
 
-    setTimeout(() => {
-        submitBtn.disabled = false;
-        btnText.innerHTML = originalBtnContent;
-        submitBtn.classList.add("bg-black", "hover:bg-gray-900");
-        submitBtn.classList.remove("bg-green-600", "hover:bg-green-700");
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    btnText.innerHTML = originalBtnContent;
+                    submitBtn.classList.add("bg-black", "hover:bg-gray-900");
+                    submitBtn.classList.remove("bg-green-600", "hover:bg-green-700");
 
-        if (successCard) {
-            successCard.classList.add("opacity-0", "translate-y-4");
-            setTimeout(() => successCard.classList.add("hidden"), 700);
-        }
-    }, 5000);
+                    if (successCard) {
+                        successCard.classList.add("opacity-0", "translate-y-4");
+                        setTimeout(() => successCard.classList.add("hidden"), 700);
+                    }
+                }, 5000);
 
-}).catch((error) => {
-    console.error("EmailJS Error:", error);
-    errorMsg.classList.remove("hidden");
-    submitBtn.disabled = false;
-    btnText.innerHTML = originalBtnContent;
-});
+            }).catch((error) => {
+                console.error("EmailJS Error:", error);
+                errorMsg.classList.remove("hidden");
+                submitBtn.disabled = false;
+                btnText.innerHTML = originalBtnContent;
+            });
 
-            
+
         });
     }
 
 });
+// ===== Scroll Reveal Animation =====
+const revealElements = document.querySelectorAll(".reveal");
+
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    },
+    { threshold: 0.15 }
+);
+
+revealElements.forEach(el => revealObserver.observe(el));
+a
